@@ -124,6 +124,6 @@ STATIC_URL = '/static/'
 CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "asgiref.inmemory.ChannelLayer",
-        "ROUTING": "Messenger.routing.channel_routing",
+        "ROUTING": "djchannels.routing.channel_routing",
                 },
                 }
