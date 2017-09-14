@@ -13,12 +13,13 @@ def register_rcv(message):
         if User.objects.filter(username=credentials["username"]).exists():
             message.reply_channel.send({"text": json.dumps({"status": "409"})})
 
-        User.objects.create_user(username=credentials["username"],
-                                 password=credentials["password"])
+        else:
+            User.objects.create_user(username=credentials["username"],
+                                     password=credentials["password"])
 
-        token = generate_token(credentials["username"])
+            token = generate_token(credentials["username"])
 
-        message.reply_channel.send({"text": json.dumps({"status": 200, "token": token})})
+            message.reply_channel.send({"text": json.dumps({"status": 200, "token": token})})
 
 
 def login_conn(message):
