@@ -65,6 +65,9 @@ def fetch_users_rcv(message):
         other_users = json.dumps([user.username for user in User.objects.exclude(username=username)])
         message.reply_channel.send({"text": other_users})
 
+    else:
+        message.reply_channel.send({"close": True})
+
 
 def reject_conn(message):
     message.reply_channel.send({"accept": False})
