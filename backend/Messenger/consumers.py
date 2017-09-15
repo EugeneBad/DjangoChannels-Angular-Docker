@@ -52,12 +52,9 @@ def login_rcv(message):
         message.reply_channel.send({"close": True})
 
 
-def fetch_users_conn(message):
-    message.reply_channel.send({"accept": True})
+def fetch_users(message):
 
-
-def fetch_users_rcv(message):
-    token = json.loads(message.content["text"]).get("token")
+    token = message.get("query_string").decode()
     if token and is_authenticated(token):
         username = is_authenticated(token)
 
@@ -68,15 +65,11 @@ def fetch_users_rcv(message):
         message.reply_channel.send({"close": True})
 
 
-def fetch_msgs_conn(message):
-    message.reply_channel.send({"accept": True})
-
-
-def fetch_msgs_rcv(message):
-
-    sndr_rcvr = can_fetch(json.loads(message.content["text"]))
+def fetch_msgs(message, text_with):
+    sndr_rcvr = can_fetch(message, text_with)
 
     if sndr_rcvr:
+        message.reply_channel.send({"accept": True})
         current_user = sndr_rcvr[0]
         text_with = sndr_rcvr[1]
 

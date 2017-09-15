@@ -16,16 +16,15 @@ def generate_token(username):
 def is_authenticated(token):
     try:
         current_username = jwt.decode(token, key=settings.SECRET_KEY)["username"]
+
         return current_username
 
     except (jwt.InvalidTokenError, jwt.ExpiredSignatureError):
         return False
 
 
-def can_fetch(data):
-    token = data.get("token")
-    text_with = data.get("text_with")
-
+def can_fetch(message, text_with):
+    token = message.get("query_string").decode()
     if token and is_authenticated(token) and User.objects.filter(username=text_with).exists():
 
         return User.objects.get(username=is_authenticated(token)),  \
