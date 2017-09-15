@@ -90,7 +90,7 @@ def fetch_msgs_rcv(message):
             {"body": txt_msg.text_content,
              "type": "sent" if txt_msg.sender == current_user else "received"}
 
-            for txt_msg in TextMessage.objects.filter(sent | received)
+            for txt_msg in TextMessage.objects.filter(sent | received).order_by('pk')
         ]
 
         message.reply_channel.send({"text": json.dumps(txt_messages)})
