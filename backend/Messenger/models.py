@@ -12,5 +12,5 @@ class UserProfile(models.Model):
 
 class TextMessage(models.Model):
     text_content = models.TextField()
-    receiver = models.OneToOneField(UserProfile, related_name="receiver")
-    sender = models.OneToOneField(UserProfile, related_name="sender")
+    receiver = models.ForeignKey(User, related_name="receiver")
+    sender = models.ForeignKey(User, related_name="sender")

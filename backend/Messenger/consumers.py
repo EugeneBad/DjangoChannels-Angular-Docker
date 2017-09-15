@@ -1,8 +1,8 @@
-from django.core.serializers import serialize
+from django.db.models import Q
 from django.contrib.auth.models import User
-from . models import UserProfile, TextMessage
+from .models import UserProfile, TextMessage
 import json
-from . utils import generate_token, is_authenticated
+from .utils import generate_token, is_authenticated
 
 
 def register_conn(message):
@@ -17,7 +17,7 @@ def register_rcv(message):
 
         else:
             UserProfile.objects.create(user=User.objects.create_user(credentials["username"],
-                                       password=credentials["password"]))
+                                                                     password=credentials["password"]))
 
             token = generate_token(credentials["username"])
 
@@ -57,13 +57,44 @@ def fetch_users_conn(message):
 
 
 def fetch_users_rcv(message):
-
     token = json.loads(message.content["text"]).get("token")
     if token and is_authenticated(token):
         username = is_authenticated(token)
 
         other_users = json.dumps([user.username for user in User.objects.exclude(username=username)])
         message.reply_channel.send({"text": other_users})
+
+    else:
+        message.reply_channel.send({"close": True})
+
+
+def fetch_msgs_conn(message):
+    message.reply_channel.send({"accept": True})
+
+
+def fetch_msgs_rcv(message):
+    token = json.loads(message.content["text"]).get("token")
+    text_with = json.loads(message.content["text"]).get("text_with")
+
+    if token and is_authenticated(token) and User.objects.filter(username=text_with).exists():
+        username = is_authenticated(token)
+        username_obj = User.objects.get(username=username)
+        text_with_obj = User.objects.get(username=text_with)
+
+        sent = Q(sender=username_obj,
+                 receiver=text_with_obj)
+
+        received = Q(sender=text_with_obj,
+                     receiver=username_obj)
+
+        txt_messages = [
+            {"body": txt_msg.text_content,
+             "type": "sent" if txt_msg.sender == username_obj else "received"}
+
+            for txt_msg in TextMessage.objects.filter(sent | received)
+        ]
+
+        message.reply_channel.send({"text": json.dumps(txt_messages)})
 
     else:
         message.reply_channel.send({"close": True})
