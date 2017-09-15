@@ -52,11 +52,17 @@ def login_rcv(message):
         message.reply_channel.send({"close": True})
 
 
-def fetch_users_conn(message, token):
-    username = is_authenticated(token)
+def fetch_users_conn(message):
+    message.reply_channel.send({"accept": True})
 
-    if username:
-        other_users = serialize('json', UserProfile.user.objects.exclude(username=username))
+
+def fetch_users_rcv(message):
+
+    token = json.loads(message.content["text"]).get("token")
+    if token and is_authenticated(token):
+        username = is_authenticated(token)
+
+        other_users = json.dumps([user.username for user in User.objects.exclude(username=username)])
         message.reply_channel.send({"text": other_users})
 
 
