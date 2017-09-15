@@ -1,4 +1,4 @@
-from django.contrib.auth.models import User
+from . models import UserProfile
 import json
 from . utils import generate_token
 
@@ -10,11 +10,11 @@ def register_conn(message):
 def register_rcv(message):
     credentials = json.loads(message.content["text"])
     if "username" in credentials and "password" in credentials:
-        if User.objects.filter(username=credentials["username"]).exists():
+        if UserProfile.user.objects.filter(username=credentials["username"]).exists():
             message.reply_channel.send({"text": json.dumps({"status": "409"})})
 
         else:
-            User.objects.create_user(username=credentials["username"],
+            UserProfile.user.objects.create_user(username=credentials["username"],
                                      password=credentials["password"])
 
             token = generate_token(credentials["username"])
@@ -34,7 +34,7 @@ def login_conn(message):
 def login_rcv(message):
     credentials = json.loads(message.content["text"])
     if "username" in credentials and "password" in credentials:
-        user = User.objects.filter(username=credentials["username"]).first()
+        user = UserProfile.user.objects.filter(username=credentials["username"]).first()
 
         if user and user.check_password(credentials["password"]):
             token = generate_token(credentials["username"])
@@ -48,6 +48,8 @@ def login_rcv(message):
 
     else:
         message.reply_channel.send({"close": True})
+
+
 
 
 def reject_conn(message):

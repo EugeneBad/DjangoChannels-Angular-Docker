@@ -13,7 +13,7 @@ channel_routing = [
 
     route("websocket.connect", fetch_conn, path="/fetch/(?P<token>[\w]+)"),
 
-    
+
     route("websocket.receive", reject_conn, path="/fetch/(?P<token>[\w]+)"),
     route("websocket.connect", reject_conn, path="/[\w]?")
 ]
