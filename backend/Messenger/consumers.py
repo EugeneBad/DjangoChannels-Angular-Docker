@@ -1,6 +1,6 @@
-from . models import UserProfile
+from . models import UserProfile, TextMessage
 import json
-from . utils import generate_token
+from . utils import generate_token, is_authenticated
 
 
 def register_conn(message):
@@ -50,6 +50,12 @@ def login_rcv(message):
         message.reply_channel.send({"close": True})
 
 
+def fetch_users_conn(message, token):
+    username = is_authenticated(token)
+
+    if username:
+        current_user = UserProfile.user.objects.get(username=username)
+        
 
 
 def reject_conn(message):

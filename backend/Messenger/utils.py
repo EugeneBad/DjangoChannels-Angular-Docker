@@ -10,3 +10,12 @@ def generate_token(username):
     token = jwt.encode(payload, key=settings.SECRET_KEY).decode()
 
     return token
+
+
+def is_authenticated(token):
+    try:
+        current_username = jwt.decode(token, key=settings.SECRET_KEY)["username"]
+        return current_username
+
+    except (jwt.InvalidTokenError, jwt.ExpiredSignatureError):
+        return False
