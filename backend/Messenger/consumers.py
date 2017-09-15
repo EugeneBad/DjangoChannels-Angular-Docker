@@ -2,7 +2,7 @@ from django.db.models import Q
 from django.contrib.auth.models import User
 from .models import UserProfile, TextMessage
 import json
-from .utils import generate_token, is_authenticated
+from .utils import generate_token, is_authenticated, can_fetch
 
 
 def register_conn(message):
@@ -73,23 +73,22 @@ def fetch_msgs_conn(message):
 
 
 def fetch_msgs_rcv(message):
-    token = json.loads(message.content["text"]).get("token")
-    text_with = json.loads(message.content["text"]).get("text_with")
 
-    if token and is_authenticated(token) and User.objects.filter(username=text_with).exists():
-        username = is_authenticated(token)
-        username_obj = User.objects.get(username=username)
-        text_with_obj = User.objects.get(username=text_with)
+    sndr_rcvr = can_fetch(json.loads(message.content["text"]))
 
-        sent = Q(sender=username_obj,
-                 receiver=text_with_obj)
+    if sndr_rcvr:
+        current_user = sndr_rcvr[0]
+        text_with = sndr_rcvr[1]
 
-        received = Q(sender=text_with_obj,
-                     receiver=username_obj)
+        sent = Q(sender=current_user,
+                 receiver=text_with)
+
+        received = Q(sender=text_with,
+                     receiver=current_user)
 
         txt_messages = [
             {"body": txt_msg.text_content,
-             "type": "sent" if txt_msg.sender == username_obj else "received"}
+             "type": "sent" if txt_msg.sender == current_user else "received"}
 
             for txt_msg in TextMessage.objects.filter(sent | received)
         ]

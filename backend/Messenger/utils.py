@@ -1,6 +1,7 @@
 import datetime
 import jwt
 from django.conf import settings
+from django.contrib.auth.models import User
 
 
 def generate_token(username):
@@ -19,3 +20,16 @@ def is_authenticated(token):
 
     except (jwt.InvalidTokenError, jwt.ExpiredSignatureError):
         return False
+
+
+def can_fetch(data):
+    token = data.get("token")
+    text_with = data.get("text_with")
+
+    if token and is_authenticated(token) and User.objects.filter(username=text_with).exists():
+
+        return User.objects.get(username=is_authenticated(token)),  \
+               User.objects.get(username=text_with)
+
+    else:
+        return None
