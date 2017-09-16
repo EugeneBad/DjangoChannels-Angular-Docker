@@ -7,6 +7,8 @@ import { AuthComponent } from './auth/auth.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ChatComponent } from './chat/chat.component';
 
+import { MdExpansionModule } from '@angular/material';
+
 const appRoutes: Routes = [
   {
     path: 'auth',
@@ -29,7 +31,8 @@ const appRoutes: Routes = [
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
-    BrowserModule
+    BrowserModule,
+    MdExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]
