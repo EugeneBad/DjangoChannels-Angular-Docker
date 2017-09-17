@@ -5,9 +5,9 @@
 
 <div class="row">
   <div class="col-md-3 col-md-push-3">
-    <md-expansion-panel>
+    <md-expansion-panel hideToggle="True">
     <md-expansion-panel-header>
-        Sign Up
+        <span>Sign Up</span>
     </md-expansion-panel-header>
 
     <form class="example-form">
@@ -18,7 +18,6 @@
       <input mdInput placeholder="Password">
     </md-form-field>
   </form>
-  <button md-raised-button>Primary</button>
   </md-expansion-panel>
   </div>
 
@@ -28,7 +27,14 @@
         <span>Sign In</span>
     </md-expansion-panel-header>
 
-  <h2>Put something here</h2>
+    <form class="example-form">
+    <md-form-field>
+      <input mdInput placeholder="Username">
+    </md-form-field>
+    <md-form-field>
+      <input mdInput placeholder="Password">
+    </md-form-field>
+  </form>
   </md-expansion-panel>
   </div>
 </div>

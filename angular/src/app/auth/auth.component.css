@@ -1,3 +1,15 @@
 #top_space_div{
   height: 22vw;
 }
+
+span{
+  margin-left:  30%;
+  font-family: helvetica;
+  font-weight: bold;
+  font-size: 3vh;
+}
+
+button{
+  background-color: Teal;
+  color: white;
+}
