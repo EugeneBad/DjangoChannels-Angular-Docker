@@ -1,3 +1,16 @@
 <nav class="navbar navbar-default">
 <button md-button color="warn" class="navbar-right" >Log Out</button>
 </nav>
+
+<div>
+  <md-sidenav-container>
+    <md-sidenav #sidenav>
+      Jolly good!
+    </md-sidenav>
+
+    <button id="sidenav_btn" type="button" md-button (click)="sidenav.open()">
+      Get Started!
+    </button>
+
+  </md-sidenav-container>
+</div>

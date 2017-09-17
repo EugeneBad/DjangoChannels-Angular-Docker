@@ -8,3 +8,16 @@ nav{
   margin-right: 0.5%;
   color: white;
 }
+
+md-sidenav-container{
+  height: 600px;
+  background-color: rgba(255, 255, 255, 0);
+}
+
+#sidenav_btn{
+  background-color: GoldenRod;
+  position: fixed;
+  top: 50%;
+  left: 44%;
+  font-size: 152%;
+}
