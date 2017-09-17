@@ -5,6 +5,9 @@
 .cont_div{
   height: 460px;
   background-color: #f8f8f8;
-  z-index: 234;
   overflow: scroll;
+}
+
+md-form-field{
+  width: 80%;
 }
