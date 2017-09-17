@@ -14,3 +14,16 @@
   color: white;
   margin-left:  60%;
 }
+
+#sign_in{
+  margin-left:  30%;
+  font-family: helvetica;
+  font-weight: bold;
+  font-size: 3vh;
+  color: Navy;
+}
+#login_btn{
+  background-color: Navy;
+  color: white;
+  margin-left:  60%;
+}
