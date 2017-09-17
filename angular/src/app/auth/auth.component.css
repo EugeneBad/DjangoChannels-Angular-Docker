@@ -2,14 +2,15 @@
   height: 22vw;
 }
 
-span{
+#sign_up{
   margin-left:  30%;
   font-family: helvetica;
   font-weight: bold;
   font-size: 3vh;
+  color: Teal;
 }
-
-button{
+#join_btn{
   background-color: Teal;
   color: white;
+  margin-left:  60%;
 }
