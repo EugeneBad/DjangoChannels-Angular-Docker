@@ -20,10 +20,10 @@
   font-family: helvetica;
   font-weight: bold;
   font-size: 3vh;
-  color: Navy;
+  color: Grey;
 }
 #login_btn{
-  background-color: Navy;
+  background-color: Grey;
   color: white;
   margin-left:  60%;
 }
