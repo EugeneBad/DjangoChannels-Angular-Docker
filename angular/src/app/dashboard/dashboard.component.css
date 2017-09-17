@@ -1,0 +1,10 @@
+nav{
+  border-radius: 0px;
+  background-color: DarkGray;
+  border: 0px;
+}
+.navbar-right{
+  margin-top: 0.5%;
+  margin-right: 0.5%;
+  color: white;
+}
