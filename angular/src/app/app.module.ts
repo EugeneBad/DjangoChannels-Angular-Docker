@@ -13,6 +13,7 @@ import { MdInputModule } from '@angular/material';
 import { MdButtonModule } from '@angular/material';
 import { MdSidenavModule } from '@angular/material';
 import { MdCardModule } from '@angular/material';
+import { MdIconModule } from '@angular/material';
 
 const appRoutes: Routes = [
   {
