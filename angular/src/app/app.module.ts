@@ -9,6 +9,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ChatComponent } from './chat/chat.component';
 
 import { MdExpansionModule } from '@angular/material';
+import { MdInputModule } from '@angular/material';
+import { MdButtonModule } from '@angular/material';
 
 const appRoutes: Routes = [
   {
@@ -34,7 +36,9 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     BrowserModule,
     BrowserAnimationsModule,
-    MdExpansionModule
+    MdExpansionModule,
+    MdInputModule,
+    MdButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
