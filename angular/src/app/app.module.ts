@@ -12,6 +12,8 @@ import { MdExpansionModule } from '@angular/material';
 import { MdInputModule } from '@angular/material';
 import { MdButtonModule } from '@angular/material';
 import { MdSidenavModule } from '@angular/material';
+import { MdCardModule } from '@angular/material';
+
 const appRoutes: Routes = [
   {
     path: 'auth',
@@ -39,7 +41,8 @@ const appRoutes: Routes = [
     MdExpansionModule,
     MdInputModule,
     MdButtonModule,
-    MdSidenavModule
+    MdSidenavModule,
+    MdCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

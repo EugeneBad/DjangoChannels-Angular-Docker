@@ -20,4 +20,5 @@ md-sidenav-container{
   top: 50%;
   left: 44%;
   font-size: 152%;
+  z-index: 2;
 }

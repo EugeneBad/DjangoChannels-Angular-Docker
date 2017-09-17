@@ -1,0 +1,10 @@
+.example-card{
+  height: 600px;
+}
+
+.cont_div{
+  height: 460px;
+  background-color: #f8f8f8;
+  z-index: 234;
+  overflow: scroll;
+}
