@@ -11,7 +11,7 @@ import { ChatComponent } from './chat/chat.component';
 import { MdExpansionModule } from '@angular/material';
 import { MdInputModule } from '@angular/material';
 import { MdButtonModule } from '@angular/material';
-
+import { MdSidenavModule } from '@angular/material';
 const appRoutes: Routes = [
   {
     path: 'auth',
@@ -38,7 +38,8 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     MdExpansionModule,
     MdInputModule,
-    MdButtonModule
+    MdButtonModule,
+    MdSidenavModule
   ],
   providers: [],
   bootstrap: [AppComponent]
