@@ -6,29 +6,29 @@
 <div class="row">
   <div class="col-md-3 col-md-push-3">
     <md-expansion-panel hideToggle="True">
-    <md-expansion-panel-header>
-        <span id="sign_up" >Sign Up</span>
-    </md-expansion-panel-header>
+      <md-expansion-panel-header>
+          <span id="sign_up" >Sign Up</span>
+      </md-expansion-panel-header>
 
-    <form class="example-form">
-      <md-form-field>
-        <input mdInput placeholder="Username">
-      </md-form-field>
-      <md-error *ngIf="">
-      Username already exists!
-      </md-error>
-      <md-form-field>
-        <input mdInput type="password" placeholder="Password">
-      </md-form-field>
-      <md-form-field>
-        <input mdInput type="password" placeholder="Confirm Password">
-      </md-form-field>
-      <md-error *ngIf="">
-      Passwords don't match!
-      </md-error>
-  </form>
-  <button id="join_btn" md-raised-button>Join</button>
-  </md-expansion-panel>
+      <form class="example-form">
+        <md-form-field>
+          <input mdInput name="signUsername" placeholder="Username" [ngModel]="signUsername">
+        </md-form-field>
+        <md-error *ngIf="duplicateUsername">
+        Username already exists!
+        </md-error>
+        <md-form-field>
+          <input mdInput name="signPassword" type="password" placeholder="Password" [ngModel]="signPassword">
+        </md-form-field>
+        <md-form-field>
+          <input mdInput name="confirmPassword" type="password" placeholder="Confirm Password" [ngModel]="confirmPassword">
+        </md-form-field>
+        <md-error *ngIf="passwordMismatch">
+        Passwords don't match!
+        </md-error>
+      </form>
+      <button id="join_btn" md-raised-button>Join</button>
+    </md-expansion-panel>
   </div>
 
   <div class="col-md-3 col-md-push-3">

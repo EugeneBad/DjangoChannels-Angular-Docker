@@ -8,6 +8,15 @@ import { root_url } from '../url';
 })
 export class AuthComponent implements OnInit {
 
+  passwordMismatch: boolean = false;
+  duplicateUsername: boolean = false;
+  signUsername: string;
+  signPassword: string;
+  confirmPassword: string;
+
+  loginUsername: string;
+  loginPassword: string;
+
   constructor() { }
 
   ngOnInit() {
