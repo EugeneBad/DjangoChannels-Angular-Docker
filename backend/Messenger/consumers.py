@@ -66,7 +66,7 @@ def fetch_users(message):
 
 
 def fetch_msgs(message, text_with):
-    sndr_rcvr = can_fetch(message, text_with)
+    sndr_rcvr = can_fetch(message, text_with.lower())
 
     if sndr_rcvr:
         message.reply_channel.send({"accept": True})
