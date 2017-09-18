@@ -50,10 +50,28 @@ export class AuthComponent implements OnInit {
           if (response.status == "200"){
             signSocket.close();
             self.router.navigate(['/dashboard']);
-
           }
         }
+      }
+    }
+  }
 
+  logIn(){
+    if (this.loginUsername && this.loginPassword){
+      this.wrongDetails = false;
+
+      let form = JSON.stringify({"username":this.loginUsername,
+       "password": this.loginPassword})
+      let self = this;
+
+      let loginSocket = new WebSocket(root_url + "/login");
+      loginSocket.onopen = function(){ loginSocket.send(form); }
+      loginSocket.onmessage = function(resp) {
+        let response = JSON.parse(resp.data);
+        if (response.status == "401"){
+          self.wrongDetails = true;
+          loginSocket.close();
+        }
       }
     }
   }
