@@ -12,11 +12,11 @@ def register_conn(message):
 def register_rcv(message):
     credentials = json.loads(message.content["text"])
     if "username" in credentials and "password" in credentials:
-        if User.objects.filter(username=credentials["username"]).exists():
+        if User.objects.filter(username=credentials["username"].lower()).exists():
             message.reply_channel.send({"text": json.dumps({"status": "409"})})
 
         else:
-            UserProfile.objects.create(user=User.objects.create_user(credentials["username"],
+            UserProfile.objects.create(user=User.objects.create_user(credentials["username"].lower(),
                                                                      password=credentials["password"]))
 
             token = generate_token(credentials["username"])
@@ -58,7 +58,7 @@ def fetch_users(message):
     if token and is_authenticated(token):
         username = is_authenticated(token)
 
-        other_users = json.dumps([user.username for user in User.objects.exclude(username=username)])
+        other_users = json.dumps([user.username.capitalize() for user in User.objects.exclude(username=username)])
         message.reply_channel.send({"text": other_users})
 
     else:
