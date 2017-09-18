@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewChecked } from '@angular/core';
+import { Component, OnInit, AfterViewChecked, Input } from '@angular/core';
 
 @Component({
   selector: 'app-chat',
@@ -6,6 +6,8 @@ import { Component, OnInit, AfterViewChecked } from '@angular/core';
   styleUrls: ['./chat.component.css']
 })
 export class ChatComponent implements OnInit, AfterViewChecked {
+
+  @Input () selectedUser;
 
   constructor() {}
 

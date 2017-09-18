@@ -11,6 +11,8 @@ export class DashboardComponent implements OnInit {
   token: string;
   users: any;
 
+  selectedUser: string;
+
   constructor() { }
 
   ngOnInit() {
@@ -23,6 +25,10 @@ export class DashboardComponent implements OnInit {
       self.users = JSON.parse(resp.data);
     }
 
+  }
+
+  showMsgs(event){
+    this.selectedUser = event.target.innerText;
   }
 
 }
