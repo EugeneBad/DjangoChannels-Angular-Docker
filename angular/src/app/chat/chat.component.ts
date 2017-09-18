@@ -13,6 +13,8 @@ export class ChatComponent implements OnInit, AfterViewChecked {
   }
 
   ngAfterViewChecked(){
+    let chatdiv = document.getElementById("cont_div");
+    chatdiv.scrollTop = chatdiv.scrollHeight;
   }
 
 }
