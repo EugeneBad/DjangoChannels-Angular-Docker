@@ -72,6 +72,10 @@ export class AuthComponent implements OnInit {
           self.wrongDetails = true;
           loginSocket.close();
         }
+        if (response.status == "200"){
+          loginSocket.close();
+          self.router.navigate(['/dashboard']);
+        }
       }
     }
   }
