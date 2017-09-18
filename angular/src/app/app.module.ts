@@ -14,6 +14,7 @@ import { MdButtonModule } from '@angular/material';
 import { MdSidenavModule } from '@angular/material';
 import { MdCardModule } from '@angular/material';
 import { MdIconModule } from '@angular/material';
+import { MdListModule } from '@angular/material';
 
 const appRoutes: Routes = [
   {
@@ -43,7 +44,8 @@ const appRoutes: Routes = [
     MdInputModule,
     MdButtonModule,
     MdSidenavModule,
-    MdCardModule
+    MdCardModule,
+    MdListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
