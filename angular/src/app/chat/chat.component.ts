@@ -47,7 +47,7 @@ export class ChatComponent implements OnInit, AfterViewChecked, OnChanges {
 
       observable.subscribe(function(data){
         self.fetchedMsgs = data;
-        self.fetchmsgSocket.close();})
+        self.fetchmsgSocket.close();});
     }
   }
 }

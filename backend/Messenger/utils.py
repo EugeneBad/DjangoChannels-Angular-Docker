@@ -32,3 +32,11 @@ def can_fetch(message, text_with):
 
     else:
         return None
+
+
+def msg_width(msg):
+    if msg.length() <= 13:
+        return 16
+
+    if 70 >= msg.length >= 14:
+        return msg.length()
