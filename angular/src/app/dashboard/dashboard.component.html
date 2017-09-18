@@ -6,8 +6,8 @@
   <md-sidenav-container>
     <md-sidenav #sidenav style="background-color:#f8f8f8; height: 90%;">
       <md-nav-list>
-        <md-list-item style="width:200px;">
-         Yes
+        <md-list-item style="width:200px;" *ngFor="let user of users">
+         {{ user }}
         </md-list-item >
       </md-nav-list>
     </md-sidenav>

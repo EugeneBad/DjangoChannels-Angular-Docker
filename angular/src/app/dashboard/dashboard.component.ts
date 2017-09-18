@@ -9,16 +9,18 @@ import { root_url } from '../url';
 export class DashboardComponent implements OnInit {
 
   token: string;
+  users: any;
 
   constructor() { }
 
   ngOnInit() {
     this.token = window.sessionStorage.getItem('token');
-    
+
     let userSocket = new WebSocket(root_url + "/fetch/users?" + this.token);
 
+    let self = this;
     userSocket.onmessage = function(resp){
-      console.log(JSON.parse(resp.data));
+      self.users = JSON.parse(resp.data);
     }
 
   }
