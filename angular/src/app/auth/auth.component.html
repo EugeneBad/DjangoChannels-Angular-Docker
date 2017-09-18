@@ -12,7 +12,7 @@
 
       <form class="example-form">
         <md-form-field>
-          <input mdInput name="signUsername" placeholder="Username" [(ngModel)]="signUsername">
+          <input mdInput name="signUsername" placeholder="Username" [(ngModel)]="signUsername" maxlength="9">
         </md-form-field>
         <md-error *ngIf="duplicateUsername">
         Username already exists!
