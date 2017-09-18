@@ -10,6 +10,7 @@ export class AuthComponent implements OnInit {
 
   passwordMismatch: boolean = false;
   duplicateUsername: boolean = false;
+
   signUsername: string;
   signPassword: string;
   confirmPassword: string;
@@ -17,11 +18,28 @@ export class AuthComponent implements OnInit {
   loginUsername: string;
   loginPassword: string;
 
-  constructor() { }
+  constructor() {
+
+  }
 
   signUp(){
-    if (this.signPassword != this.confirmPassword){
-      this.passwordMismatch = true;
+    if (this.signUsername && this.signPassword && this.confirmPassword){
+      if (this.signPassword != this.confirmPassword){
+        this.passwordMismatch = true;
+        this.duplicateUsername = false;
+      }
+      if (this.signPassword == this.confirmPassword){
+        this.passwordMismatch = false;
+        this.duplicateUsername = false;
+
+        let form = JSON.stringify({"username":this.signUsername,
+         "password": this.signPassword})
+
+        let signSocket = new WebSocket(root_url + "/register");
+        signSocket.onopen = function(){ signSocket.send(form); }
+        signSocket.onmessage = function(resp) {console.log(resp.data)}
+
+      }
     }
   }
 
