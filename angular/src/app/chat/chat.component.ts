@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewChecked, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { root_url } from '../url';
-
+import { Observable } from 'rxjs/Observable';
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
@@ -38,10 +38,16 @@ export class ChatComponent implements OnInit, AfterViewChecked, OnChanges {
     if (changes["selectedUser"]){
 
       self.fetchmsgSocket = new WebSocket(root_url + `/fetch/msgs/${self.selectedUser}?` + self.token);
-      self.fetchmsgSocket.onmessage = function(resp){
-        this.fetchedMsgs = JSON.parse(resp.data);
-        self.fetchmsgSocket.close();
-      }
+
+      let observable = new Observable(observer => {
+        self.fetchmsgSocket.onmessage = function(resp){
+          observer.next(JSON.parse(resp.data));
+        }
+      });
+
+      observable.subscribe(function(data){
+        self.fetchedMsgs = data;
+        self.fetchmsgSocket.close();})
     }
   }
 }
