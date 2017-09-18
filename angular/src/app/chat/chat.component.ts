@@ -19,11 +19,10 @@ export class ChatComponent implements OnInit, AfterViewChecked, OnChanges {
 
   ngOnInit() {
     this.token = window.sessionStorage.getItem("token");
-
     let self = this;
     self.fetchmsgSocket = new WebSocket(root_url + `/fetch/msgs/${self.selectedUser}?` + self.token);
     self.fetchmsgSocket.onmessage = function(resp){
-        this.fetchedMsgs = JSON.parse(resp.data);
+        self.fetchedMsgs = JSON.parse(resp.data);
         self.fetchmsgSocket.close();
       }
   }
@@ -34,6 +33,7 @@ export class ChatComponent implements OnInit, AfterViewChecked, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges){
+    this.fetchedMsgs = [];
     let self = this;
     if (changes["selectedUser"]){
 

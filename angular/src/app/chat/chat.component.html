@@ -9,6 +9,16 @@
       <md-card-content >
         <div id="cont_div">
 
+          <div *ngFor="let msg of fetchedMsgs">
+            <div id="sent_div" *ngIf="msg.type == 'sent'">
+                {{ msg.body }}
+            </div>
+
+            <div id="received_div" *ngIf="msg.type == 'received'">
+                {{ msg.body }}
+            </div>
+
+          </div>
         </div>
       </md-card-content>
       <md-form-field><input mdInput></md-form-field>
