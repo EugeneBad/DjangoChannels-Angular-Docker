@@ -2,7 +2,7 @@
   height: 600px;
 }
 
-.cont_div{
+#cont_div{
   height: 460px;
   background-color: #f8f8f8;
   overflow: scroll;
