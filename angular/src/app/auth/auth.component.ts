@@ -49,6 +49,7 @@ export class AuthComponent implements OnInit {
           }
           if (response.status == "200"){
             signSocket.close();
+            window.sessionStorage.setItem('token', response.token);
             self.router.navigate(['/dashboard']);
           }
         }
