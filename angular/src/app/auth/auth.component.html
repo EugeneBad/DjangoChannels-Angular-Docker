@@ -12,22 +12,22 @@
 
       <form class="example-form">
         <md-form-field>
-          <input mdInput name="signUsername" placeholder="Username" [ngModel]="signUsername">
+          <input mdInput name="signUsername" placeholder="Username" [(ngModel)]="signUsername">
         </md-form-field>
         <md-error *ngIf="duplicateUsername">
         Username already exists!
         </md-error>
         <md-form-field>
-          <input mdInput name="signPassword" type="password" placeholder="Password" [ngModel]="signPassword">
+          <input mdInput name="signPassword" type="password" placeholder="Password" [(ngModel)]="signPassword">
         </md-form-field>
         <md-form-field>
-          <input mdInput name="confirmPassword" type="password" placeholder="Confirm Password" [ngModel]="confirmPassword">
+          <input mdInput name="confirmPassword" type="password" placeholder="Confirm Password" [(ngModel)]="confirmPassword">
         </md-form-field>
         <md-error *ngIf="passwordMismatch">
         Passwords don't match!
         </md-error>
       </form>
-      <button id="join_btn" md-raised-button>Join</button>
+      <button id="join_btn" md-raised-button (click)="signUp()">Join</button>
     </md-expansion-panel>
   </div>
 

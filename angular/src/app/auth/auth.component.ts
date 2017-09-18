@@ -19,6 +19,12 @@ export class AuthComponent implements OnInit {
 
   constructor() { }
 
+  signUp(){
+    if (this.signPassword != this.confirmPassword){
+      this.passwordMismatch = true;
+    }
+  }
+
   ngOnInit() {
   }
 
