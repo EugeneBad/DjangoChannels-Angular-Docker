@@ -10,11 +10,11 @@
         <div id="cont_div">
 
           <div *ngFor="let msg of fetchedMsgs">
-            <div id="sent_div" *ngIf="msg.type == 'sent'">
+            <div id="sent_div" *ngIf="msg.type == 'sent'" style.width.%="{{ msg.width }}" style.margin-left.%="{{ msg.margin }}">
                 {{ msg.body }}
             </div>
 
-            <div id="received_div" *ngIf="msg.type == 'received'">
+            <div id="received_div" *ngIf="msg.type == 'received'" style.width.%="{{ msg.width }}">
                 {{ msg.body }}
             </div>
 

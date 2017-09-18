@@ -80,7 +80,8 @@ def fetch_msgs(message, text_with):
                      receiver=current_user)
 
         txt_messages = [
-            {"width": msg_width(txt_msg.text_content),
+            {"margin": 99 - msg_width(txt_msg.text_content),
+             "width": msg_width(txt_msg.text_content),
              "body": txt_msg.text_content,
              "type": "sent" if txt_msg.sender == current_user else "received"}
 
