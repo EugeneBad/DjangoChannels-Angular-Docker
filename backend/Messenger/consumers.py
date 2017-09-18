@@ -2,7 +2,7 @@ from django.db.models import Q
 from django.contrib.auth.models import User
 from .models import UserProfile, TextMessage
 import json
-from .utils import generate_token, is_authenticated, can_fetch
+from .utils import generate_token, is_authenticated, can_fetch, msg_width
 
 
 def register_conn(message):
@@ -80,7 +80,8 @@ def fetch_msgs(message, text_with):
                      receiver=current_user)
 
         txt_messages = [
-            {"body": txt_msg.text_content,
+            {"width": msg_width(txt_msg.text_content),
+             "body": txt_msg.text_content,
              "type": "sent" if txt_msg.sender == current_user else "received"}
 
             for txt_msg in TextMessage.objects.filter(sent | received).order_by('pk')
