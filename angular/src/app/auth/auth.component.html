@@ -44,6 +44,9 @@
     <md-form-field>
       <input mdInput type="password" placeholder="Password">
     </md-form-field>
+    <md-error *ngIf="wrongDetails">
+    Check username and password
+    </md-error>
   </form>
   <button id="login_btn" md-raised-button>Log In</button>
   </md-expansion-panel>

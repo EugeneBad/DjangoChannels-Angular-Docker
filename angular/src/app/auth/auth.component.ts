@@ -12,6 +12,9 @@ export class AuthComponent implements OnInit {
   passwordMismatch: boolean = false;
   duplicateUsername: boolean = false;
 
+  wrongDetails: boolean = false;
+
+
   signUsername: string;
   signPassword: string;
   confirmPassword: string;
