@@ -39,16 +39,16 @@
 
     <form class="example-form">
     <md-form-field>
-      <input mdInput type="password" placeholder="Username">
+      <input mdInput name="loginUsername" type="password" placeholder="Username" [(ngModel)]="loginUsername">
     </md-form-field>
     <md-form-field>
-      <input mdInput type="password" placeholder="Password">
+      <input mdInput name="loginPassword" type="password" placeholder="Password" [(ngModel)]="loginPassword">
     </md-form-field>
     <md-error *ngIf="wrongDetails">
-    Check username and password
+    Check username and password.
     </md-error>
   </form>
-  <button id="login_btn" md-raised-button>Log In</button>
+  <button id="login_btn" md-raised-button >Log In</button>
   </md-expansion-panel>
   </div>
 </div>
