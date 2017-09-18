@@ -44,6 +44,11 @@ export class AuthComponent implements OnInit {
             self.duplicateUsername = true;
             signSocket.close();
           }
+          if (response.status == "200"){
+            signSocket.close();
+            self.router.navigate(['/dashboard']);
+
+          }
         }
 
       }
