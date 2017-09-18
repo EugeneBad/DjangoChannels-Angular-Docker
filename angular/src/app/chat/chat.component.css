@@ -11,3 +11,18 @@
 md-form-field{
   width: 92%;
 }
+
+#sent_div{
+  background-color: khaki;
+  color: black;
+  padding: 5px;
+  border-radius: 5px 0px 0px 5px;
+
+}
+
+#received_div{
+  background-color: navy;
+  color: white;
+  margin-left: 1%;
+  border-radius: 0px 5px 5px 0px;
+}

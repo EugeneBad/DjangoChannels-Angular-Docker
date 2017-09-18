@@ -35,8 +35,8 @@ def can_fetch(message, text_with):
 
 
 def msg_width(msg):
-    if msg.length() <= 13:
+    if len(msg) <= 13:
         return 16
 
-    if 70 >= msg.length >= 14:
-        return msg.length()
+    if 70 >= len(msg) >= 14:
+        return len(msg)
