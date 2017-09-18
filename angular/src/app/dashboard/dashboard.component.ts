@@ -8,6 +8,8 @@ import { root_url } from '../url';
 })
 export class DashboardComponent implements OnInit {
 
+  showChat: boolean = false;
+
   token: string;
   users: any;
 
@@ -24,11 +26,10 @@ export class DashboardComponent implements OnInit {
     userSocket.onmessage = function(resp){
       self.users = JSON.parse(resp.data);
     }
-
   }
 
   showMsgs(event){
     this.selectedUser = event.target.innerText;
+    this.showChat = true;
   }
-
 }

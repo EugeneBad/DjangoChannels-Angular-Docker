@@ -15,6 +15,6 @@
     <button id="sidenav_btn" type="button" md-button (click)="sidenav.open()">
       Get Started!
     </button>
-    <app-chat [selectedUser]="selectedUser"></app-chat>
+    <app-chat *ngIf="showChat" [selectedUser]="selectedUser"></app-chat>
   </md-sidenav-container>
 </div>
