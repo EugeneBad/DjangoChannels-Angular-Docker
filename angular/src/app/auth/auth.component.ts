@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { root_url } from '../url';
 
 @Component({
@@ -18,7 +19,7 @@ export class AuthComponent implements OnInit {
   loginUsername: string;
   loginPassword: string;
 
-  constructor() {
+  constructor(private router: Router) {
 
   }
 
@@ -34,10 +35,16 @@ export class AuthComponent implements OnInit {
 
         let form = JSON.stringify({"username":this.signUsername,
          "password": this.signPassword})
-
+        let self = this;
         let signSocket = new WebSocket(root_url + "/register");
         signSocket.onopen = function(){ signSocket.send(form); }
-        signSocket.onmessage = function(resp) {console.log(resp.data)}
+        signSocket.onmessage = function(resp) {
+          let response = JSON.parse(resp.data);
+          if (response.status == "409"){
+            self.duplicateUsername = true;
+            signSocket.close();
+          }
+        }
 
       }
     }
