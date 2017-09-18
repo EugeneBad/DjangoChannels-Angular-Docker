@@ -34,6 +34,14 @@ export class ChatComponent implements OnInit, AfterViewChecked, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges){
-    
+    let self = this;
+    if (changes["selectedUser"]){
+
+      self.fetchmsgSocket = new WebSocket(root_url + `/fetch/msgs/${self.selectedUser}?` + self.token);
+      self.fetchmsgSocket.onmessage = function(resp){
+        this.fetchedMsgs = JSON.parse(resp.data);
+        self.fetchmsgSocket.close();
+      }
+    }
   }
 }
