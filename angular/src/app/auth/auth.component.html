@@ -11,15 +11,21 @@
     </md-expansion-panel-header>
 
     <form class="example-form">
-    <md-form-field>
-      <input mdInput placeholder="Username">
-    </md-form-field>
-    <md-form-field>
-      <input mdInput type="password" placeholder="Password">
-    </md-form-field>
-    <md-form-field>
-      <input mdInput type="password" placeholder="Confirm Password">
-    </md-form-field>
+      <md-form-field>
+        <input mdInput placeholder="Username">
+      </md-form-field>
+      <md-error *ngIf="">
+      Username already exists!
+      </md-error>
+      <md-form-field>
+        <input mdInput type="password" placeholder="Password">
+      </md-form-field>
+      <md-form-field>
+        <input mdInput type="password" placeholder="Confirm Password">
+      </md-form-field>
+      <md-error *ngIf="">
+      Passwords don't match!
+      </md-error>
   </form>
   <button id="join_btn" md-raised-button>Join</button>
   </md-expansion-panel>
