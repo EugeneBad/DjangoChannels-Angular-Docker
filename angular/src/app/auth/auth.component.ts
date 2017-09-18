@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { root_url } from '../url';
 
 @Component({
   selector: 'app-auth',
