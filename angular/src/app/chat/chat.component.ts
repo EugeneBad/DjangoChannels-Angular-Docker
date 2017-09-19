@@ -112,6 +112,10 @@ export class ChatComponent implements OnInit, AfterViewChecked, OnChanges {
     );
   }
 
+  clickEnter(event){
+    if (event.key == "Enter"){this.send()}
+  }
+
   send() {
     if (this.textMsg != "") {
       this.listenSocket.send(JSON.stringify({
