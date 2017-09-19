@@ -1,6 +1,6 @@
 from django.db.models import Q
 from django.contrib.auth.models import User
-from channels import Group
+from channels import Group as listen_on
 from .models import UserProfile, TextMessage
 import json
 from .utils import generate_token, is_authenticated, can_fetch, msg_width
@@ -97,7 +97,12 @@ def fetch_msgs(message, text_with):
 
 def listener_conn(message):
     token = message.get("query_string").decode()
-    if token and is_authenticated(token):
+    current_username = is_authenticated(token)
+    if token and current_username:
+        listen_on("{}".format(message.content['reply_channel'].split('!')[1])).add(message.reply_channel)
+        current_user = UserProfile.objects.get(user=User.objects.get(username=current_username))
+        current_user.online_code = message.content['reply_channel'].split('!')[1]
+        current_user.save()
         message.reply_channel.send({"accept": True})
 
 def listener_rcv(message):
