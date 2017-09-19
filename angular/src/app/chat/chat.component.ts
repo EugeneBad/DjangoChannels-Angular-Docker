@@ -9,7 +9,9 @@ import { Observable } from 'rxjs/Observable';
 export class ChatComponent implements OnInit, AfterViewChecked, OnChanges {
 
   token: string;
+  textMsg: string = "";
   fetchmsgSocket: any;
+  listenSocket: any;
 
   fetchedMsgs: any;
 
@@ -53,7 +55,21 @@ export class ChatComponent implements OnInit, AfterViewChecked, OnChanges {
   }
 
   listen(){
-    let listenSocket = new WebSocket(root_url + "/online?" + this.token);
+    this.listenSocket = new WebSocket(root_url + "/online?" + this.token);
+
+  }
+
+  send(){
+    if (this.textMsg != ""){
+      console.log(this.token);
+
+
+
+      this.listenSocket.send(JSON.stringify({"token":this.token,"to": this.selectedUser, "body":this.textMsg}));
+
+
+
+    }
 
   }
 

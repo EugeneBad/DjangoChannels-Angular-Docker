@@ -21,8 +21,8 @@
           </div>
         </div>
       </md-card-content>
-      <md-form-field><input mdInput></md-form-field>
-    <button md-mini-fab color="primary">
+      <md-form-field><input mdInput  [(ngModel)]="textMsg"></md-form-field>
+    <button md-mini-fab color="primary" (click)="send()">
       <i class="material-icons">send</i>
     </button>
     </md-card>

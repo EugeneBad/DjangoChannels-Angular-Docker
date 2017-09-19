@@ -108,7 +108,7 @@ def listener_conn(message):
 
 def listener_rcv(message):
     payload = json.loads(message.content['text'])
-    sndr_rcvr = can_fetch(message, payload.get('to'))
+    sndr_rcvr = can_fetch(message, token=payload.get('token'), text_with=payload.get('to').lower())  # message is useless
 
     if sndr_rcvr and payload.get('body'):
         current_user = sndr_rcvr[0]
@@ -124,6 +124,8 @@ def listener_rcv(message):
                              "margin": 99 - msg_width(payload.get('body'))}
 
             listen_on(user_to_online_code).send({"text": json.dumps(real_time_msg)})
+
+        message.reply_channel.send(json.dumps({"status": "sent"}))
 
 
 def listener_disc(message):
