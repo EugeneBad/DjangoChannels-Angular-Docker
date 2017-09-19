@@ -96,10 +96,15 @@ def fetch_msgs(message, text_with):
 
 
 def listener_conn(message):
+    token = message.get("query_string").decode()
+    if token and is_authenticated(token):
+        message.reply_channel.send({"accept": True})
+
+def listener_rcv(message):
     pass
 
 
-def listener_rcv(message):
+def listener_disc(message):
     pass
 
 
