@@ -25,6 +25,7 @@ export class ChatComponent implements OnInit, AfterViewChecked, OnChanges {
         self.fetchedMsgs = JSON.parse(resp.data);
         self.fetchmsgSocket.close();
       }
+    this.listen();
   }
 
   ngAfterViewChecked(){
@@ -39,15 +40,21 @@ export class ChatComponent implements OnInit, AfterViewChecked, OnChanges {
 
       self.fetchmsgSocket = new WebSocket(root_url + `/fetch/msgs/${self.selectedUser}?` + self.token);
 
-      let observable = new Observable(observer => {
+      let fetchObservable = new Observable(observer => {
         self.fetchmsgSocket.onmessage = function(resp){
           observer.next(JSON.parse(resp.data));
         }
       });
 
-      observable.subscribe(function(data){
+      fetchObservable.subscribe(function(data){
         self.fetchedMsgs = data;
         self.fetchmsgSocket.close();});
     }
   }
+
+  listen(){
+    let listenSocket = new WebSocket(root_url + "/online?" + this.token);
+
+  }
+
 }
