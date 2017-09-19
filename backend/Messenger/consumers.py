@@ -118,14 +118,17 @@ def listener_rcv(message):
         user_to_online_code = UserProfile.objects.get(user=user_to).online_code
 
         if user_to_online_code != "offline":
-            real_time_msg = {"from": current_user.username,
+            real_time_msg = {"from": current_user.username.capitalize(),
                              "body": payload.get('body'),
                              "width": msg_width(payload.get('body')),
-                             "margin": 99 - msg_width(payload.get('body'))}
+                             "margin": 99 - msg_width(payload.get('body')),
+                             "status": "received"}
 
             listen_on(user_to_online_code).send({"text": json.dumps(real_time_msg)})
 
-        message.reply_channel.send(json.dumps({"status": "sent"}))
+        message.reply_channel.send({"text": json.dumps({"status": "sent",
+                                                        "width": msg_width(payload.get('body')),
+                                                        "margin": 99 - msg_width(payload.get('body'))})})
 
 
 def listener_disc(message):

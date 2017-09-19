@@ -1,27 +1,27 @@
-.example-card{
+.example-card {
   height: 600px;
 }
 
-#cont_div{
+#cont_div {
   height: 460px;
   background-color: #f8f8f8;
   overflow: scroll;
+  padding-bottom: 5px;
 }
 
-md-form-field{
+md-form-field {
   width: 92%;
 }
 
-#sent_div{
+.sent_div {
   background-color: khaki;
   color: black;
   padding: 5px;
   border-radius: 5px 0px 0px 5px;
   margin-top: 1%;
-
 }
 
-#received_div{
+.received_div {
   background-color: navy;
   color: white;
   padding: 5px;

@@ -6,23 +6,23 @@
         <md-card-title>{{ selectedUser }}</md-card-title>
       </md-card-header>
 
-      <md-card-content >
+      <md-card-content>
         <div id="cont_div">
 
           <div *ngFor="let msg of fetchedMsgs">
-            <div id="sent_div" *ngIf="msg.type == 'sent'" style.width.%="{{ msg.width }}" style.margin-left.%="{{ msg.margin }}">
-                {{ msg.body }}
+            <div class="sent_div" *ngIf="msg.type == 'sent'" style.width.%="{{ msg.width }}" style.margin-left.%="{{ msg.margin }}">
+              {{ msg.body }}
             </div>
 
-            <div id="received_div" *ngIf="msg.type == 'received'" style.width.%="{{ msg.width }}">
-                {{ msg.body }}
+            <div class="received_div" *ngIf="msg.type == 'received'" style.width.%="{{ msg.width }}">
+              {{ msg.body }}
             </div>
 
           </div>
         </div>
       </md-card-content>
-      <md-form-field><input mdInput  [(ngModel)]="textMsg"></md-form-field>
-    <button md-mini-fab color="primary" (click)="send()">
+      <md-form-field><input mdInput [(ngModel)]="textMsg"></md-form-field>
+      <button md-mini-fab color="primary" (click)="send()">
       <i class="material-icons">send</i>
     </button>
     </md-card>
