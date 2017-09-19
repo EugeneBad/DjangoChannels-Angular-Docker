@@ -16,6 +16,7 @@ import { MdSidenavModule } from '@angular/material';
 import { MdCardModule } from '@angular/material';
 import { MdIconModule } from '@angular/material';
 import { MdListModule } from '@angular/material';
+import { MdSnackBarModule } from '@angular/material';
 
 const appRoutes: Routes = [
   {
@@ -47,7 +48,8 @@ const appRoutes: Routes = [
     MdButtonModule,
     MdSidenavModule,
     MdCardModule,
-    MdListModule
+    MdListModule,
+    MdSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

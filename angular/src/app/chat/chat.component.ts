@@ -1,4 +1,5 @@
 import { Component, OnInit, AfterViewChecked, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { MdSnackBar } from '@angular/material';
 import { root_url } from '../url';
 import { Observable } from 'rxjs/Observable';
 @Component({
@@ -17,7 +18,7 @@ export class ChatComponent implements OnInit, AfterViewChecked, OnChanges {
 
   @Input() selectedUser;
 
-  constructor() { }
+  constructor(public snackBar: MdSnackBar) { }
 
   ngOnInit() {
     this.token = window.sessionStorage.getItem("token");
@@ -88,6 +89,8 @@ export class ChatComponent implements OnInit, AfterViewChecked, OnChanges {
 
         if (data["status"] == "received") {
 
+          self.snackBar.open(`${data['body']}`, `${data['from']}`, {duration: 2000});
+
 
           if (data['from'] == self.selectedUser){
             let div = document.createElement('div');
@@ -105,11 +108,8 @@ export class ChatComponent implements OnInit, AfterViewChecked, OnChanges {
             document.getElementById('cont_div').appendChild(div);
           }
         }
-
       }
     );
-
-
   }
 
   send() {
@@ -120,7 +120,5 @@ export class ChatComponent implements OnInit, AfterViewChecked, OnChanges {
         "body": this.textMsg
       }));
     }
-
   }
-
 }
