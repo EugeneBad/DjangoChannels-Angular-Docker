@@ -121,7 +121,6 @@ def listener_rcv(message):
             real_time_msg = {"from": current_user.username.capitalize(),
                              "body": payload.get('body'),
                              "width": msg_width(payload.get('body')),
-                             "margin": 99 - msg_width(payload.get('body')),
                              "status": "received"}
 
             listen_on(user_to_online_code).send({"text": json.dumps(real_time_msg)})

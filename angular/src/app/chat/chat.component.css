@@ -6,7 +6,6 @@
   height: 460px;
   background-color: #f8f8f8;
   overflow: scroll;
-  padding-bottom: 5px;
 }
 
 md-form-field {
@@ -19,12 +18,15 @@ md-form-field {
   padding: 5px;
   border-radius: 5px 0px 0px 5px;
   margin-top: 1%;
+  margin-bottom: 1%;
 }
 
 .received_div {
   background-color: navy;
   color: white;
   padding: 5px;
+  margin-top: 1%;
+  margin-bottom: 1%;
   margin-left: 1%;
   border-radius: 0px 5px 5px 0px;
 }

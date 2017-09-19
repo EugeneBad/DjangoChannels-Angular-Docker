@@ -40,3 +40,6 @@ def msg_width(msg):
 
     if 70 >= len(msg) >= 14:
         return len(msg)
+
+    if len(msg) > 71:
+        return 70

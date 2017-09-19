@@ -68,7 +68,6 @@ export class ChatComponent implements OnInit, AfterViewChecked, OnChanges {
     listenObservable.subscribe(
       function(data) {
         if (data["status"] == "sent") {
-          self.fetchedMsgs.push(data)
 
           let div = document.createElement('div');
 
@@ -77,17 +76,35 @@ export class ChatComponent implements OnInit, AfterViewChecked, OnChanges {
           padding: 5px;
           border-radius: 5px 0px 0px 5px;
           margin-top: 1%;
+          margin-bottom: 1%;
           width: ${data['width']}%;
           margin-left: ${data['margin']}%`
 
           div.innerHTML = `${self.textMsg}`
 
           document.getElementById('cont_div').appendChild(div);
-
+          self.textMsg = "";
         }
-        // if (){
-        //
-        // }
+
+        if (data["status"] == "received") {
+
+
+          if (data['from'] == self.selectedUser){
+            let div = document.createElement('div');
+
+            div.style.cssText = `background-color: navy;
+            color: white;
+            padding: 5px;
+            border-radius: 0px 5px 5px 0px;
+            margin-top: 1%;
+            margin-bottom: 1%;
+            width: ${data['width']}%;
+            margin-left: 1%;`
+
+            div.innerHTML = `${data['body']}`
+            document.getElementById('cont_div').appendChild(div);
+          }
+        }
 
       }
     );
