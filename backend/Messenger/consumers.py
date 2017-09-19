@@ -94,5 +94,13 @@ def fetch_msgs(message, text_with):
         message.reply_channel.send({"close": True})
 
 
+def listener_conn(message):
+    pass
+
+
+def listener_rcv(message):
+    pass
+
+
 def reject_conn(message):
     message.reply_channel.send({"accept": False})
