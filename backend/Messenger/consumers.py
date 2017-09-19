@@ -105,8 +105,25 @@ def listener_conn(message):
         current_user.save()
         message.reply_channel.send({"accept": True})
 
+
 def listener_rcv(message):
-    pass
+    payload = json.loads(message.content['text'])
+    sndr_rcvr = can_fetch(message, payload.get('to'))
+
+    if sndr_rcvr and payload.get('body'):
+        current_user = sndr_rcvr[0]
+        user_to = sndr_rcvr[1]
+
+        TextMessage.objects.create(text_content=payload.get('body'), sender=current_user, receiver=user_to)
+        user_to_online_code = UserProfile.objects.get(user=user_to).online_code
+
+        if user_to_online_code != "offline":
+            real_time_msg = {"from": current_user.username,
+                             "body": payload.get('body'),
+                             "width": msg_width(payload.get('body')),
+                             "margin": 99 - msg_width(payload.get('body'))}
+
+            listen_on(user_to_online_code).send({"text": json.dumps(real_time_msg)})
 
 
 def listener_disc(message):
