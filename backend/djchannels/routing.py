@@ -6,6 +6,7 @@ from Messenger.consumers import \
     fetch_msgs, \
     listener_conn, \
     listener_rcv, \
+    listener_disc, \
     reject_conn
 
 channel_routing = [
@@ -18,8 +19,9 @@ channel_routing = [
 
     route("websocket.connect", fetch_msgs, path="/fetch/msgs/(?P<text_with>[\w]+)"),
 
-    route("websocket.connect", listener_conn, path="/online/(?P<text_with>[\w]+)"),
-    route("websocket.receive", listener_rcv, path="/online/(?P<text_with>[\w]+)"),
+    route("websocket.connect", listener_conn, path="/online"),
+    route("websocket.receive", listener_rcv, path="/online"),
+    route("websocket.disconnect", listener_disc, path="/online"),
 
     route("websocket.connect", reject_conn, path="/[\w]?")
 ]

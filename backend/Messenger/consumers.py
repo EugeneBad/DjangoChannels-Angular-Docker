@@ -1,5 +1,6 @@
 from django.db.models import Q
 from django.contrib.auth.models import User
+from channels import Group
 from .models import UserProfile, TextMessage
 import json
 from .utils import generate_token, is_authenticated, can_fetch, msg_width
