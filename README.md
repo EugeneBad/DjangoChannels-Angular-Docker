@@ -18,3 +18,4 @@ but that does not mean it can't be run (crudely though):
 
 * Run `ng serve` to run the frontend on `localhost:4200` which you can navigate to in your browser.
 
+**NB:** Assuming Nodejs and Python already installed.
