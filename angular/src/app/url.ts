@@ -1,1 +1,1 @@
-export const root_url = "ws://dev.ops:8000";
+export const root_url = "ws://" + window.location.hostname + ":8000";
