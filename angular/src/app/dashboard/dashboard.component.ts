@@ -16,7 +16,7 @@ export class DashboardComponent implements OnInit {
   selectedUser: string;
 
   constructor() { }
-
+// Add an observable to integrate route protection
   ngOnInit() {
     this.token = window.sessionStorage.getItem('token');
 
