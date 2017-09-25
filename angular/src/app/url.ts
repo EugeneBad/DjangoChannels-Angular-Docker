@@ -1,1 +1,1 @@
-export const root_url = "ws://localhost:8000";
+export const root_url = "ws://dev.ops:8000";

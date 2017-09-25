@@ -1,0 +1,20 @@
+version: "3"
+services:
+  nginx:
+    build:
+      context: ./angular
+    ports:
+      - "80:80"
+      - "8000:8000"
+    networks:
+      - wsproxy
+
+  django:
+    build:
+      context: ./backend
+    networks:
+      - wsproxy
+
+networks:
+  wsproxy:
+    driver: bridge
