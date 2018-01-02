@@ -5,7 +5,7 @@ This project; which is a stripped down implementation of WhatsApp web; demonstra
 real time bidirectional, full-duplex communication between the client and backend.
 
 ## Running the application
-The recommended way to run the application is to use the launch bash script; open a terminal and type
+The recommended way to run the application is to use the launch bash script; open a terminal and type:
 `. launch.sh`
 This will build the angular javascript files and go on to create the docker containers and network
 to serve up the application.
