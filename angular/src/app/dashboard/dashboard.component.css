@@ -24,3 +24,12 @@ mat-sidenav-container{
   transform:
     rotate(-90deg);
 }
+
+h1{
+  color: white;
+  position: fixed;
+  top: 30%;
+  left: 33%;
+  font-family: Comic Sans MS;
+  font-size: 90pt;
+}
