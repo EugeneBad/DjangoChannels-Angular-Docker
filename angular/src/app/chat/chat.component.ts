@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewChecked, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { MdSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material';
 import { root_url } from '../url';
 import { Observable } from 'rxjs/Observable';
 @Component({
@@ -18,7 +18,7 @@ export class ChatComponent implements OnInit, AfterViewChecked, OnChanges {
 
   @Input() selectedUser;
 
-  constructor(public snackBar: MdSnackBar) { }
+  constructor(public snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.token = window.sessionStorage.getItem("token");

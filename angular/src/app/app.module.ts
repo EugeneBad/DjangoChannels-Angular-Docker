@@ -9,14 +9,14 @@ import { AuthComponent } from './auth/auth.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ChatComponent } from './chat/chat.component';
 
-import { MdExpansionModule } from '@angular/material';
-import { MdInputModule } from '@angular/material';
-import { MdButtonModule } from '@angular/material';
-import { MdSidenavModule } from '@angular/material';
-import { MdCardModule } from '@angular/material';
-import { MdIconModule } from '@angular/material';
-import { MdListModule } from '@angular/material';
-import { MdSnackBarModule } from '@angular/material';
+import { MatExpansionModule } from '@angular/material';
+import { MatInputModule } from '@angular/material';
+import { MatButtonModule } from '@angular/material';
+import { MatSidenavModule } from '@angular/material';
+import { MatCardModule } from '@angular/material';
+import { MatIconModule } from '@angular/material';
+import { MatListModule } from '@angular/material';
+import { MatSnackBarModule } from '@angular/material';
 
 const appRoutes: Routes = [
   {
@@ -43,13 +43,13 @@ const appRoutes: Routes = [
     FormsModule,
     BrowserModule,
     BrowserAnimationsModule,
-    MdExpansionModule,
-    MdInputModule,
-    MdButtonModule,
-    MdSidenavModule,
-    MdCardModule,
-    MdListModule,
-    MdSnackBarModule
+    MatExpansionModule,
+    MatInputModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatCardModule,
+    MatListModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

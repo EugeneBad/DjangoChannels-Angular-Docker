@@ -1,12 +1,12 @@
 <div class="row">
-  <div class="col-md-6 col-md-push-3">
-    <md-card class="example-card">
-      <md-card-header>
+  <div class="col-mat-6 col-mat-push-3">
+    <mat-card class="example-card">
+      <mat-card-header>
 
-        <md-card-title>{{ selectedUser }}</md-card-title>
-      </md-card-header>
+        <mat-card-title>{{ selectedUser }}</mat-card-title>
+      </mat-card-header>
 
-      <md-card-content>
+      <mat-card-content>
         <div id="cont_div">
 
           <div *ngFor="let msg of fetchedMsgs">
@@ -20,12 +20,12 @@
 
           </div>
         </div>
-      </md-card-content>
-      <md-form-field><input mdInput (keypress)="clickEnter($event)" [(ngModel)]="textMsg"></md-form-field>
-      <button md-mini-fab color="primary" (click)="send()">
+      </mat-card-content>
+      <mat-form-field><input matInput (keypress)="clickEnter($event)" [(ngModel)]="textMsg"></mat-form-field>
+      <button mat-mini-fab color="primary" (click)="send()">
       <i class="material-icons">send</i>
     </button>
-    </md-card>
+    </mat-card>
 
   </div>
 </div>
