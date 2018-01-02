@@ -1,12 +1,12 @@
 <nav class="navbar navbar-default">
-<button mat-button color="warn" class="navbar-right" >Log Out</button>
+<button mat-button color="warn" class="navbar-right" (click)="logOut()" >Log Out</button>
 </nav>
 
 <div>
   <mat-sidenav-container>
     <mat-sidenav #sidenav style="background-color:#f8f8f8; height: 90%;">
       <mat-nav-list>
-        <mat-list-item style="width:200px;" *ngFor="let user of users" (click)="showMsgs($event)">
+        <mat-list-item style="width:200px;" *ngFor="let user of users" (click)="showMsgs($event)" >
          {{ user }}
         </mat-list-item >
       </mat-nav-list>

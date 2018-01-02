@@ -37,4 +37,10 @@ export class DashboardComponent implements OnInit {
     this.selectedUser = event.target.innerText;
     this.showChat = true;
   }
+
+  logOut(){
+    sessionStorage.clear();
+    this.router.navigate(['/auth']);
+  }
+  
 }
