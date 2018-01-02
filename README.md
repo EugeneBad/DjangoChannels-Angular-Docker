@@ -20,7 +20,7 @@ Alternatively, you can run the application in  a rather crude way without using 
 * Open up a terminal and after cloning the repo, create a python `virtualenv` and run  
 `pip install -r ./backend/requirements.txt`
 
-* Run `python manage.py runserver` to run the Django backend.
+* Run `python manage.py runserver 0.0.0.0:8000` to run the Django backend.
 
 * Open another terminal and navigate to `repo/angular` and run  
 `npm install`.
