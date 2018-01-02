@@ -18,10 +18,12 @@ export class ChatComponent implements OnInit, AfterViewChecked, OnChanges {
 
   @Input() selectedUser;
 
-  constructor(public snackBar: MatSnackBar) { }
+  constructor(public snackBar: MatSnackBar) {
+    this.token = window.sessionStorage.getItem("token");
+  }
 
   ngOnInit() {
-    this.token = window.sessionStorage.getItem("token");
+    console.log("HERE" + this.token + "HERE");
     let self = this;
     self.fetchmsgSocket = new WebSocket(root_url + `/fetch/msgs/${self.selectedUser}?` + self.token);
     self.fetchmsgSocket.onmessage = function(resp) {
