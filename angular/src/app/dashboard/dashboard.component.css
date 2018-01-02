@@ -17,8 +17,10 @@ mat-sidenav-container{
 #sidenav_btn{
   background-color: GoldenRod;
   position: fixed;
-  top: 50%;
-  left: 44%;
+  top: 43%;
+  left: 0%;
   font-size: 152%;
   z-index: 2;
+  transform:
+    rotate(-90deg);
 }

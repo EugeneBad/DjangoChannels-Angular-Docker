@@ -11,6 +11,9 @@
 mat-form-field {
   width: 92%;
 }
+mat-card-title {
+  font-weight: bold;
+}
 
 .sent_div {
   background-color: khaki;
