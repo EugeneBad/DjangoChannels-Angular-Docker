@@ -23,7 +23,6 @@ export class ChatComponent implements OnInit, AfterViewChecked, OnChanges {
   }
 
   ngOnInit() {
-    console.log("HERE" + this.token + "HERE");
     let self = this;
     self.fetchmsgSocket = new WebSocket(root_url + `/fetch/msgs/${self.selectedUser}?` + self.token);
     self.fetchmsgSocket.onmessage = function(resp) {
@@ -41,7 +40,7 @@ export class ChatComponent implements OnInit, AfterViewChecked, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     this.fetchedMsgs = [];
     let self = this;
-    if (changes["selectedUser"]) {
+    if (changes["selectedUser"] && changes["selectedUser"]["previousValue"]) {
 
       self.fetchmsgSocket = new WebSocket(root_url + `/fetch/msgs/${self.selectedUser}?` + self.token);
 
@@ -52,6 +51,7 @@ export class ChatComponent implements OnInit, AfterViewChecked, OnChanges {
       });
 
       fetchObservable.subscribe(function(data) {
+        document.getElementById('latest_msg_div').innerHTML = "";
         self.fetchedMsgs = data;
         self.fetchmsgSocket.close();
       });
@@ -85,7 +85,7 @@ export class ChatComponent implements OnInit, AfterViewChecked, OnChanges {
 
           div.innerHTML = `${self.textMsg}`
 
-          document.getElementById('cont_div').appendChild(div);
+          document.getElementById('latest_msg_div').appendChild(div);
           self.textMsg = "";
         }
 
@@ -107,7 +107,7 @@ export class ChatComponent implements OnInit, AfterViewChecked, OnChanges {
             margin-left: 1%;`
 
             div.innerHTML = `${data['body']}`
-            document.getElementById('cont_div').appendChild(div);
+            document.getElementById('latest_msg_div').appendChild(div);
           }
         }
       }
