@@ -52,6 +52,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'djchannels.urls'
+ASGI_APPLICATION = "djchannels.routing.application"
 
 TEMPLATES = [
     {
@@ -124,6 +125,5 @@ STATIC_URL = '/static/'
 CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "asgiref.inmemory.ChannelLayer",
-        "ROUTING": "djchannels.routing.channel_routing",
-                },
+                }
                 }

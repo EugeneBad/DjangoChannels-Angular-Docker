@@ -24,7 +24,7 @@ export class ChatComponent implements OnInit, AfterViewChecked, OnChanges {
 
   ngOnInit() {
     let self = this;
-    self.fetchmsgSocket = new WebSocket(root_url + `/fetch/msgs/${self.selectedUser}?` + self.token);
+    self.fetchmsgSocket = new WebSocket(root_url + `/fetch/msgs/${self.selectedUser}/` + self.token);
     self.fetchmsgSocket.onmessage = function(resp) {
       self.fetchedMsgs = JSON.parse(resp.data);
       self.fetchmsgSocket.close();
@@ -42,7 +42,7 @@ export class ChatComponent implements OnInit, AfterViewChecked, OnChanges {
     let self = this;
     if (changes["selectedUser"] && changes["selectedUser"]["previousValue"]) {
 
-      self.fetchmsgSocket = new WebSocket(root_url + `/fetch/msgs/${self.selectedUser}?` + self.token);
+      self.fetchmsgSocket = new WebSocket(root_url + `/fetch/msgs/${self.selectedUser}/` + self.token);
 
       let fetchObservable = new Observable(observer => {
         self.fetchmsgSocket.onmessage = function(resp) {
@@ -59,7 +59,7 @@ export class ChatComponent implements OnInit, AfterViewChecked, OnChanges {
   }
 
   listen() {
-    this.listenSocket = new WebSocket(root_url + "/online?" + this.token);
+    this.listenSocket = new WebSocket(root_url + "/online/" + this.token);
     let self = this;
 
     let listenObservable = new Observable(observer => {

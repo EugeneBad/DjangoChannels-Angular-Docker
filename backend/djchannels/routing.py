@@ -1,27 +1,23 @@
-from channels import route
+from django.conf.urls import url
+from channels.routing import ProtocolTypeRouter, URLRouter
+from channels.auth import AuthMiddlewareStack
+
 from Messenger.consumers import \
-    register_conn, register_rcv, \
-    login_conn, login_rcv, \
-    fetch_users, \
-    fetch_msgs, \
-    listener_conn, \
-    listener_rcv, \
-    listener_disc, \
-    reject_conn
+    RegisterUser, \
+    LoginUser, \
+    FetchUser, \
+    FetchMsg, \
+    Listen
 
-channel_routing = [
-    route("websocket.connect", register_conn, path="/register"),
-    route("websocket.receive", register_rcv, path="/register"),
-    route("websocket.connect", login_conn, path="/login"),
-    route("websocket.receive", login_rcv, path="/login"),
+application = ProtocolTypeRouter({
 
-    route("websocket.connect", fetch_users, path="/fetch/users"),
-
-    route("websocket.connect", fetch_msgs, path="/fetch/msgs/(?P<text_with>[\w]+)"),
-
-    route("websocket.connect", listener_conn, path="/online"),
-    route("websocket.receive", listener_rcv, path="/online"),
-    route("websocket.disconnect", listener_disc, path="/online"),
-
-    route("websocket.connect", reject_conn, path="/[\w]?")
-]
+    "websocket": AuthMiddlewareStack(
+        URLRouter([
+            url("register", RegisterUser),
+            url("login", LoginUser),
+            url("fetch/users/(?P<token>[\w\.]+)", FetchUser),
+            url("fetch/msgs/(?P<text_with>[\w\.]+)/(?P<token>[\w\.]+)", FetchMsg),
+            url("online/(?P<token>[\w\.]+)", Listen),
+        ])
+    ),
+})

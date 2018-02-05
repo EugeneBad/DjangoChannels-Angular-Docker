@@ -23,8 +23,8 @@ def is_authenticated(token):
         return False
 
 
-def can_fetch(message, text_with, token=None):
-    token = message.get("query_string").decode() if not token else token
+def can_fetch(text_with, token=None):
+
     if token and is_authenticated(token) and User.objects.filter(username=text_with).exists():
 
         return User.objects.get(username=is_authenticated(token)),  \

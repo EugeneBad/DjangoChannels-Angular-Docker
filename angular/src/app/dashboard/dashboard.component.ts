@@ -24,7 +24,7 @@ export class DashboardComponent implements OnInit {
       this.router.navigate(['/auth']);
     }
     else {
-      let userSocket = new WebSocket(root_url + "/fetch/users?" + this.token);
+      let userSocket = new WebSocket(root_url + "/fetch/users/" + this.token);
 
       let self = this;
       userSocket.onmessage = function(resp){
@@ -42,5 +42,5 @@ export class DashboardComponent implements OnInit {
     sessionStorage.clear();
     this.router.navigate(['/auth']);
   }
-  
+
 }
