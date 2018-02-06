@@ -7,7 +7,7 @@ from Messenger.consumers import \
     LoginUser, \
     FetchUser, \
     FetchMsg, \
-    Listen
+    ListenMsg
 
 application = ProtocolTypeRouter({
 
@@ -15,9 +15,10 @@ application = ProtocolTypeRouter({
         URLRouter([
             url("register", RegisterUser),
             url("login", LoginUser),
-            url("fetch/users/(?P<token>[\w\.]+)", FetchUser),
-            url("fetch/msgs/(?P<text_with>[\w\.]+)/(?P<token>[\w\.]+)", FetchMsg),
-            url("online/(?P<token>[\w\.]+)", Listen),
+            url("^fetch/users/(?P<token>[\w\.\-]+)$", FetchUser),
+            url("^online/(?P<token>[\w\.\-]+)$", ListenMsg),
+            url("^fetch/msgs/(?P<text_with>[\w]+)/(?P<token>[\w\.\-]+)$", FetchMsg),
+
         ])
     ),
 })

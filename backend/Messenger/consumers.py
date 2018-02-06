@@ -51,14 +51,10 @@ class LoginUser(WebsocketConsumer):
 
 
 class FetchUser(SyncConsumer):
-    def websocket_connect(self):
+    def websocket_connect(self, m):
         token = self.scope["url_route"]["kwargs"].get("token")
-        print(token + "Here Here Here")
         if token and is_authenticated(token):
             self.send({"type": "websocket.accept"})
-
-
-            token = self.scope["url_route"]["kwargs"].get("token")
 
             username = is_authenticated(token)
 
@@ -70,12 +66,12 @@ class FetchUser(SyncConsumer):
 
 
 class FetchMsg(SyncConsumer):
-    def websocket_connect(self):
+    def websocket_connect(self, m):
         token = self.scope["url_route"]["kwargs"].get("token")
         if token and is_authenticated(token):
             self.send({"type": "websocket.accept"})
 
-            sndr_n_rcvr = can_fetch(token, self.scope["url_route"]["kwargs"].get("text_with").lower())
+            sndr_n_rcvr = can_fetch(self.scope["url_route"]["kwargs"].get("text_with").lower(), token)
 
             if sndr_n_rcvr:
                 self.send({
@@ -105,18 +101,21 @@ class FetchMsg(SyncConsumer):
             self.send({"type": "websocket.close"})
 
 
-class Listen(SyncConsumer):
-    def websocket_connect(self):
+class ListenMsg(SyncConsumer):
+    def websocket_connect(self, m):
         token = self.scope["url_route"]["kwargs"].get("token")
         current_username = is_authenticated(token)
         if token and current_username:
             current_user = UserProfile.objects.get(user=User.objects.get(username=current_username))
-            current_user.online_code = self.channel_name
+            current_user.online_code = "!" + self.channel_name.split("!")[1]
+
             current_user.save()
+            self.send({"type": "websocket.accept"})
+        else:
             self.send({"type": "websocket.accept"})
 
     def websocket_receive(self, message):
-        payload = json.loads(message.get["text"])
+        payload = json.loads(message.get("text"))
         sndr_rcvr = can_fetch(token=payload.get('token'), text_with=payload.get('to').lower())
 
         if sndr_rcvr and payload.get('body'):
@@ -125,6 +124,7 @@ class Listen(SyncConsumer):
 
             TextMessage.objects.create(text_content=payload.get('body'), sender=current_user, receiver=user_to)
             user_to_online_code = UserProfile.objects.get(user=user_to).online_code
+            print(user_to_online_code)
 
             if user_to_online_code != "offline":
                 real_time_msg = {"from": current_user.username.capitalize(),
@@ -132,7 +132,7 @@ class Listen(SyncConsumer):
                                  "width": msg_width(payload.get('body')),
                                  "status": "received"}
 
-                AsyncToSync(channel_layer.send)(user_to_online_code, {
+                self.channel_layer.send(user_to_online_code, {
                     "type": "websocket.send",
                     "text": json.dumps(real_time_msg)})
 
