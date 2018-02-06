@@ -52,6 +52,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'djchannels.urls'
+ASGI_APPLICATION = "djchannels.routing.application"
 
 TEMPLATES = [
     {
