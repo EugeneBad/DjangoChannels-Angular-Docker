@@ -4,8 +4,15 @@ services:
     image: eugenebad/djchangular_nginx
     ports:
       - "80:80"
+      - "8000:8000"
+    networks:
+      - wsproxy
 
   django:
     image: eugenebad/djchangular_django
-    ports:
-      - "8000:8000"
+    networks:
+      - wsproxy
+
+networks:
+  wsproxy:
+    driver: bridge
