@@ -74,10 +74,6 @@ class FetchMsg(SyncConsumer):
             sndr_n_rcvr = can_fetch(self.scope["url_route"]["kwargs"].get("text_with").lower(), token)
 
             if sndr_n_rcvr:
-                self.send({
-                    "type": "websocket.accept",
-                })
-
                 current_user = sndr_n_rcvr[0]
                 text_with = sndr_n_rcvr[1]
 
@@ -95,7 +91,7 @@ class FetchMsg(SyncConsumer):
 
                     for txt_msg in TextMessage.objects.filter(sent | received).order_by('pk')
                 ]
-                self.send({"text_data": json.dumps(txt_messages)})
+                self.send({"type": "websocket.send", "text": json.dumps(txt_messages)})
 
         else:
             self.send({"type": "websocket.close"})
@@ -107,12 +103,12 @@ class ListenMsg(SyncConsumer):
         current_username = is_authenticated(token)
         if token and current_username:
             current_user = UserProfile.objects.get(user=User.objects.get(username=current_username))
-            current_user.online_code = "!" + self.channel_name.split("!")[1]
+            current_user.online_code = self.channel_name
 
             current_user.save()
             self.send({"type": "websocket.accept"})
         else:
-            self.send({"type": "websocket.accept"})
+            self.send({"type": "websocket.close"})
 
     def websocket_receive(self, message):
         payload = json.loads(message.get("text"))
@@ -131,11 +127,13 @@ class ListenMsg(SyncConsumer):
                                  "body": payload.get('body'),
                                  "width": msg_width(payload.get('body')),
                                  "status": "received"}
-
+                # This portion of the code is non-operational because the feature has not been fully implemented yet in
+                # channels2.0
+                ##############################
                 self.channel_layer.send(user_to_online_code, {
                     "type": "websocket.send",
                     "text": json.dumps(real_time_msg)})
-
+                ##############################
             self.send({"type": "websocket.send",
                        "text": json.dumps({"status": "sent",
                                            "width": msg_width(payload.get('body')),

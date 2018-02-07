@@ -1,3 +1,4 @@
-channels
+channels==2.0.1
 Django==1.11
 PyJWT
+channels_redis
