@@ -8,7 +8,3 @@ frondend-b ansible_host=10.0.1.92
 [backend]
 backend-a ansible_host=10.0.2.181
 backend-b ansible_host=10.0.2.33
-
-[all:vars]
-ansible_python_interpreter=/usr/bin/python3
-host_key_checking=False
