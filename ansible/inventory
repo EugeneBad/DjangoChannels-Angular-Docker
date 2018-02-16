@@ -1,3 +1,4 @@
+localhost ansible_connection=local
 db ansible_host=10.0.3.89
 main-lb ansible_host=10.0.0.95
 
