@@ -1,4 +1,4 @@
 ---
 ansible_become: true
-ansible_python_interpreter=/usr/bin/python3
-host_key_checking=False
+ansible_python_interpreter: /usr/bin/python3
+host_key_checking: False
