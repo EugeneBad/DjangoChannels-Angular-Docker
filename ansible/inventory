@@ -1,1 +1,14 @@
-localhost ansible_connection=local
+db ansible_host=10.0.3.89
+main-lb ansible_host=10.0.0.95
+
+[frontend]
+frontend-a ansible_host=10.0.1.246
+frondend-b ansible_host=10.0.1.92
+
+[backend]
+backend-a ansible_host=10.0.2.181
+backend-b ansible_host=10.0.2.33
+
+[all:vars]
+ansible_python_interpreter=/usr/bin/python3
+host_key_checking=False
