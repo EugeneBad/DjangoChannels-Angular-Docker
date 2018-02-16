@@ -1,5 +1,5 @@
 - hosts: all
   gather_facts: no
   roles:
-  - install_locale
+  - install_locales
   - install_docker
