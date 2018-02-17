@@ -3,3 +3,4 @@
   roles:
   - install_locales
   - install_docker
+  - install_k8s
