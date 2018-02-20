@@ -4,4 +4,3 @@
   - install_locales
   - install_docker
   - install_k8s
-  - add_nodes_to_cluster
