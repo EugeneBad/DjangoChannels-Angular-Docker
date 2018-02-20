@@ -1,2 +1,2 @@
 - name: Add nodes to cluster
-  shell: sudo kubeadm join --token 1f55e5.d976610ea3a80276 10.0.0.5:6443 --discovery-token-ca-cert-hash sha256:426b6a5578229e2742f7d5a694c9ee877b3b1cd61ae78dedd809f9151b1b77cd
+  shell: kubeadm join --token d0f767.3550707f040dfda1 10.0.0.3:6443 --discovery-token-ca-cert-hash sha256:1703a0e6ff0cd989292676684bbfb42f236dc246ab444dc5642f9909a7a0f34d
