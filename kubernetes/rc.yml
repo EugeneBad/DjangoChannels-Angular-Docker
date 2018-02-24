@@ -6,12 +6,12 @@ spec:
   replicas: 5
   selector:
     name: main-lb-pod
-    template:
-      metadata:
-        name: main-lb-pod
-        spec:
-          containers:
-            - name: mainlb-container
-              image: eugenebad/k8s-tut-mainlb
-              ports:
-                - containerPort: 80
+  template:
+    metadata:
+      name: main-lb-pod
+      spec:
+        containers:
+          - name: mainlb-container
+            image: eugenebad/k8s-tut-mainlb
+            ports:
+              - containerPort: 80
