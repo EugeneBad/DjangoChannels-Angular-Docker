@@ -13,6 +13,6 @@ spec:
     spec:
       containers:
         - name: mainlb-container
-          image: eugenebad/k8s-tut-mainlb
+          image: eugenebad/k8s-tut-front
           ports:
             - containerPort: 80
