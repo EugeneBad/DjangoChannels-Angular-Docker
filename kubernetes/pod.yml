@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: Main Load Balancer Pod
+  name: main load balancer pod
 spec:
   containers:
-    - name: MainLB Container
+    - name: mainlb container
       image: eugenebad/k8s-tut-mainlb
       ports:
         - containerPort: 80
