@@ -1,5 +1,5 @@
 FROM python:latest
-COPY . /var/www
+COPY ./backend/ /var/www
 EXPOSE 8000
 WORKDIR /var/www
 RUN pip install -r requirements.txt
