@@ -9,9 +9,9 @@ spec:
   template:
     metadata:
       name: main-lb-pod
-      spec:
-        containers:
-          - name: mainlb-container
-            image: eugenebad/k8s-tut-mainlb
-            ports:
-              - containerPort: 80
+    spec:
+      containers:
+        - name: mainlb-container
+          image: eugenebad/k8s-tut-mainlb
+          ports:
+            - containerPort: 80
