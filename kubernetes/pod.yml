@@ -1,0 +1,10 @@
+apiversion: v1
+kind: Pod
+metadata:
+  name: hello-world pod
+spec:
+  containers:
+    - name: hello-ctr
+      image:
+      ports:
+        - containerPort: 8000
