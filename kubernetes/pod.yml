@@ -1,10 +1,10 @@
 apiversion: v1
 kind: Pod
 metadata:
-  name: hello-world pod
+  name: Main Load Balancer Pod
 spec:
   containers:
-    - name: hello-ctr
-      image:
+    - name: MainLB Container
+      image: eugenebad/k8s-tut-mainlb
       ports:
-        - containerPort: 8000
+        - containerPort: 80
