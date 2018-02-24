@@ -1,14 +1,16 @@
 apiVersion: v1
 kind: ReplicationController
 metadata:
-  name: djch-rc
+  labels:
+    stage: djch-rc-test
 spec:
   replicas: 5
   selector:
-    name: main-lb-pod
+    stage: main-lb-pod-test
   template:
     metadata:
-      name: main-lb-pod
+      labels:
+        stage: main-lb-pod-test
     spec:
       containers:
         - name: mainlb-container
