@@ -5,8 +5,9 @@ metadata:
 spec:
   type: NodePort
   ports:
-    - port: 80
+    - name: frontend-entry-port
       nodePort: 30002
+      port: 80
       protocol: TCP
   selector:
     app: djch-frontend-pod
