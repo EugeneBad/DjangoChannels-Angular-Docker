@@ -17,7 +17,7 @@ spec:
           ports:
             - name: main-entry-port
               containerPort: 80
-              hostPort: 80
+              hostPort: 8008
             - name: api-entry-port
               containerPort: 8000
               hostPort: 8000
