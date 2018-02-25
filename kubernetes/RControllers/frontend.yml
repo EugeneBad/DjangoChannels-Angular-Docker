@@ -9,7 +9,7 @@ spec:
   template:
     metadata:
       labels:
-        stage: djch-frontend-pod
+        app: djch-frontend-pod
     spec:
       containers:
         - name: frontend-container
