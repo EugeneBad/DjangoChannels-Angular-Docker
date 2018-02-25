@@ -9,7 +9,7 @@ spec:
   template:
     metadata:
       labels:
-        stage: djch-mainlb-pod
+        app: djch-mainlb-pod
     spec:
       containers:
         - name: mainlb-container
