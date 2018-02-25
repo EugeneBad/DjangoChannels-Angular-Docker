@@ -8,5 +8,5 @@ spec:
     - port: 8000
       nodePort: 30003
       protocol: TCP
-    selector:
-      app: djch-backend-pod
+  selector:
+    app: djch-backend-pod
