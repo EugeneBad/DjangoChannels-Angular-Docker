@@ -22,4 +22,4 @@ spec:
               containerPort: 8000
               hostPort: 8000
       nodeSelector:
-        hostname: main-lb
+        kubernetes.io/hostname: main-lb
