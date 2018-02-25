@@ -1,18 +1,20 @@
 apiVersion: v1
 kind: ReplicationController
 metadata:
-  name: djch-rc-test
+  name: djch-mainlb-rc
 spec:
-  replicas: 5
+  replicas: 1
   selector:
-    stage: main-lb-pod-test
+    app: djch-mainlb-pod
   template:
     metadata:
       labels:
-        stage: main-lb-pod-test
+        stage: djch-mainlb-pod
     spec:
       containers:
         - name: mainlb-container
-          image: eugenebad/k8s-tut-front
+          image: eugenebad/k8s-tut-mainlb
           ports:
             - containerPort: 80
+      nodeSelector:
+        hostname: main-lb
