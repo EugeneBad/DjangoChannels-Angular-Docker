@@ -6,7 +6,7 @@ spec:
   type: NodePort
   ports:
     - name: frontend-entry-port
-      port: 30002
+      port: 30002 # Clusterwide, service accessed on this port.
       targetPort: 80
       protocol: TCP
   selector:

@@ -6,8 +6,8 @@ spec:
   type: NodePort
   ports:
     - name: main-app-entry-port
-      nodePort: 30001
-      port: 80
+      nodePort: 30001 #Externally, the service is accessed on this port
+      port: 80 # Internally/clusterwide, the service is accessed on this port; unless explicitly specified, targetPort also takes up this value
       protocol: TCP
     - name: api-entry-port
       nodePort: 30002
