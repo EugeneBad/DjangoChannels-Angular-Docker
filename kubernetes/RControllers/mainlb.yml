@@ -3,7 +3,7 @@ kind: ReplicationController
 metadata:
   name: djch-mainlb-rc
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     app: djch-mainlb-pod
   template:
@@ -19,5 +19,3 @@ spec:
               containerPort: 80
             - name: api-entry-port
               containerPort: 8000
-      nodeSelector:
-        kubernetes.io/hostname: main-lb
