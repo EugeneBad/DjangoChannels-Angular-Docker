@@ -6,8 +6,8 @@ spec:
   type: NodePort
   ports:
     - name: api-port
-      nodePort: 30003
-      port: 8000
+      port: 30003
+      targetPort: 8000
       protocol: TCP
   selector:
     app: djch-backend-pod

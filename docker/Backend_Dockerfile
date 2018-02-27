@@ -3,4 +3,4 @@ COPY ./backend/ /var/www
 EXPOSE 8000
 WORKDIR /var/www
 RUN pip install -r requirements.txt
-CMD [".", "backend_launcher.sh"]
+CMD ["/bin/bash", "backend_launcher.sh"]
