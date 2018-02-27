@@ -88,7 +88,7 @@ DATABASES = {
         'NAME': 'djchannels',
         'USER': 'djchannels',
         'PASSWORD': 'djchannels',
-        'HOST': '10.0.3.2',
+        'HOST': '10.0.2.3',
         'PORT': '5432',
     }
 }
