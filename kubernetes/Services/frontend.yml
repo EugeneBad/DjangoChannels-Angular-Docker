@@ -6,8 +6,10 @@ spec:
   type: NodePort
   ports:
     - name: frontend-entry-port
-      port: 30002 # Clusterwide, service accessed on this port.
+      nodePort: 30002 # Clusterwide, service accessed on this port.
+      port: 80
       targetPort: 80
       protocol: TCP
   selector:
     app: djch-frontend-pod
+  sessionAffinity: ClientIP

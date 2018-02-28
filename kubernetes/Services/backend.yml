@@ -6,7 +6,8 @@ spec:
   type: NodePort
   ports:
     - name: api-port
-      port: 30003
+      nodePort: 30003
+      port: 8000
       targetPort: 8000
       protocol: TCP
   selector:
