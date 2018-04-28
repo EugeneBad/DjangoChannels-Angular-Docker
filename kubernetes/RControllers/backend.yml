@@ -14,5 +14,8 @@ spec:
       containers:
         - name: backend-container
           image: eugenebad/k8s-tut-back
+
+        - name: backendproxy-container
+          image: eugenebad/k8s-tut-backproxy
           ports:
-            - containerPort: 8000
+            - containerPort: 80

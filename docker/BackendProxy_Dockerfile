@@ -1,4 +1,4 @@
 FROM nginx:latest
 RUN mv /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.template
-COPY ./docker/nginx_conf/entry.conf /etc/nginx/conf.d
+COPY ./docker/nginx_conf/backendproxy.conf /etc/nginx/conf.d
 WORKDIR /var/www
