@@ -16,6 +16,6 @@ spec:
           image: eugenebad/k8s-tut-back
 
         - name: backendproxy-container
-          image: eugenebad/k8s-tut-backproxy
+          image: eugenebad/terraform-tut-backproxy
           ports:
             - containerPort: 80
