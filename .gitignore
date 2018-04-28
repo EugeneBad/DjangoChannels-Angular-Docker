@@ -3,4 +3,8 @@
 **/.DS_Store
 *.sqlite3
 __pycache__/
-.idea/
+**/.idea
+**/.terraform
+**/bench-key.json
+**/terraform.tfstate*
+

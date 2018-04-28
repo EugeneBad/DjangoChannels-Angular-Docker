@@ -1,0 +1,19 @@
+{
+  "builders": [
+    {
+      "type": "googlecompute",
+      "account_file": "bench-key.json",
+      "project_id": "bench-200118",
+      "source_image": "ubuntu-1604-xenial-v20180418",
+      "zone": "asia-south1-a",
+      "ssh_username": "packer",
+      "image_name": "db-base-image"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "script": "files/db/db.sh"
+    }
+  ]
+}
