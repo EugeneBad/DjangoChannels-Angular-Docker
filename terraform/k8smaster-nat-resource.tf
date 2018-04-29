@@ -5,6 +5,8 @@ resource "google_compute_instance" "k8smaster-nat-instance" {
   can_ip_forward = true
   tags = ["public"]
   description = "Linux instance that acts as both the k8s master and the nat gateway"
+
+  metadata_startup_script = "sudo sysctl -w net.ipv4.ip_forward=1; sudo iptables -t nat -A POSTROUTING -o ens4 -j MASQUERADE"
   boot_disk {
     initialize_params {
       image = "ubuntu-1604-xenial-v20180418"
