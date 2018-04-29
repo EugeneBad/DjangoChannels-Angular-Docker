@@ -3,7 +3,7 @@ kind: ReplicationController
 metadata:
   name: djch-frontend-rc
 spec:
-  replicas: 10
+  replicas: 2
   selector:
     app: djch-frontend-pod
   template:
