@@ -2,7 +2,7 @@ resource "google_compute_instance" "db-instance" {
   name         = "db-instance"
   machine_type = "n1-standard-1"
   zone         = "asia-south1-a"
-  tags = ["private"]
+  tags = ["private", "db"]
   description = "Linux instance that hosts the database"
   depends_on = ["google_compute_instance.k8smaster-nat-instance"]
   boot_disk {
