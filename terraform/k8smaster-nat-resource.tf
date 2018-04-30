@@ -16,9 +16,7 @@ resource "google_compute_instance" "k8smaster-nat-instance" {
   network_interface {
     subnetwork = "${google_compute_subnetwork.public-subnetwork.name}"
 
-    access_config {
-      nat_ip = "${google_compute_address.lb-nat-address.address}"
-    }
+    access_config {}
   }
 
   provisioner "file" {
