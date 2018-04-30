@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Deployment
+metadata:
+  name: djch-backend-deployment
+spec:
+  replicas: 5
+  template:
+    metadata:
+      labels:
+        app: djch-backend-pod
+    spec:
+      containers:
+        - name: backend-container
+          image: eugenebad/k8s-tut-back
+
+        - name: backendproxy-container
+          image: eugenebad/terraform-tut-backproxy
+          ports:
+            - containerPort: 80
