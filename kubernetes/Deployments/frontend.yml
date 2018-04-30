@@ -1,9 +1,11 @@
-apiVersion: apps/v1beta2
+apiVersion: v1
 kind: Deployment
 metadata:
   name: djch-frontend-deployment
 spec:
   replicas: 7
+  selector:
+    app: djch-frontend-pod
   template:
     metadata:
       labels:
