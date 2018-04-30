@@ -13,3 +13,5 @@ variable "gce-ssh-pub-key-file" {
 variable "gce-ssh-private-key-file" {
   description = "gce-ssh-user private key file"
 }
+
+variable "k8scluster-join-hash" {}
