@@ -10,6 +10,8 @@ resource "google_compute_instance_template" "k8sclstr-template" {
 
   network_interface {
     subnetwork = "${google_compute_subnetwork.private-subnetwork.name}"
+    
+    access_config {}
   }
 
   metadata_startup_script = "sudo ${var.k8scluster-join-hash}"

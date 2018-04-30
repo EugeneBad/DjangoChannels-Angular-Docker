@@ -1,7 +1,7 @@
 resource "google_compute_firewall" "allow-public-firewallrule" {
   name    = "allow-public-firewallrule"
   network = "${google_compute_network.djchangular-vpc.name}"
-  description = "Firewall rule that opens http port(80) on the public instance"
+  description = "Firewall rule that opens ssh port(22) on the public instance"
 
   allow {
     protocol = "icmp"
