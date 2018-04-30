@@ -5,7 +5,8 @@ metadata:
 spec:
   replicas: 5
   selector:
-    app: djch-backend-pod
+    matchLabels:
+      app: djch-backend-pod
   template:
     metadata:
       labels:
